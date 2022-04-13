@@ -65,6 +65,7 @@ async function checkMyDistributions() {
 
   let distributionHistory = [];
   const myContractWithSigner = myContract.connect(signer);
+  console.log(account[0])
   distributionHistory = await myContractWithSigner.getMyDistribution(account[0]);
   console.log(distributionHistory);
 
