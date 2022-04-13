@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="#" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Ejemplo</title>
+    <script
+      src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+      type="application/javascript"
+    ></script>
+    <script src="distribution.js"></script>
+  </head>
+  <body>
+    <title>NFT Distribution</title>
+    <h1>NFT Claim Dapp</h1>
+    <button type="button" onclick="connectMetamask()">Connect Metamask</button>
+    <div id="account"></div>
+    <h2>Distribution</h2>
+    <p>
+      Addresses to distribute:
+      <textarea
+        id="dst_addr"
+        rows="8"
+        cols="100"
+        placeholder="0xAF76D890e2D6C6bACE5e3d8b777F5e0E8435965F,0xAF76D890e2D6C6bACE5e3d8b777F5e0E8435965F"
+      >
+      </textarea>
+
+    </p>
+    <p>
+      NFT level to distribute:
+      <select id="level">
+        <option disabled selected value>--Select your NFT level--</option>
+        <option>Level 1</option>
+        <option>Level 2</option>
+        <option>Level 3</option>
+        <option>Level 4</option>
+        <option>Level 5</option>
+        <option>Level 6</option>
+        <option>Level 7</option>
+      </select>
+    </p>
+    <button type="button" onclick="makeDistribution()">
+      Make Distribution
+    </button>
+    <div id="make"></div>
+    <button type="button" onclick="checkMyDistributions()">
+      Check My Distribution 
+    </button>
+    <div id="oneMonthAgo"></div>
+    <div id="twoMonthsAgo"></div>
+    <div id="threeMonthsAgo"></div>
+    <button type="button" onclick="claim()">
+      Claim my NFTs
+    </button>
+    <div id="claim"></div>
+    <button type="button" onclick="remove()">
+      Remove NFTs out of date
+    </button>
+    <div id="remove"></div>
+  </body>
+</html>
