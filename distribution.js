@@ -2,13 +2,13 @@ var provider = null;
 var signer = null;
 var account = null;
 
-const contractAddress = "0x45Bcc0a44DE4F3BaD6925C928C795D84a39FDAfb";
+const contractAddress = "0x1804eDC76945fDEC503c9a477d7A1E27dc8bcA7a";
 const contractAbi = [{"inputs":[{"internalType":"address","name":"addr","type":"address"},{"internalType":"address","name":"administrator","type":"address"},{"internalType":"address","name":"depositAddress","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[],"name":"NftsAssigned","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"","type":"address"},{"indexed":false,"internalType":"uint256","name":"","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"","type":"uint256"}],"name":"UserClaimed","type":"event"},{"inputs":[],"name":"admin","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"depositAddr","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"distributionHistory","outputs":[{"internalType":"uint256","name":"nftId","type":"uint256"},{"internalType":"uint256","name":"timestamp","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getMyDistribution","outputs":[{"components":[{"internalType":"uint256","name":"nftId","type":"uint256"},{"internalType":"uint256","name":"timestamp","type":"uint256"}],"internalType":"struct NftDistributionTEST.Distribution[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getReceptors","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_nftId","type":"uint256"},{"internalType":"address[]","name":"users","type":"address[]"}],"name":"makeDistribution","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"nftContract","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"},{"internalType":"uint256[]","name":"","type":"uint256[]"},{"internalType":"uint256[]","name":"","type":"uint256[]"},{"internalType":"bytes","name":"","type":"bytes"}],"name":"onERC1155BatchReceived","outputs":[{"internalType":"bytes4","name":"","type":"bytes4"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"bytes","name":"","type":"bytes"}],"name":"onERC1155Received","outputs":[{"internalType":"bytes4","name":"","type":"bytes4"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"receptors","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"removeNftsOutOfDate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}];
 var myContract = null;
 
-const level1 = "1493061011265167126244964198184541412411170283335545267344517717521579648784";
-const level2 = "1493061011265167126244964198184541412411170283335545267344517718621091274060";
-const level3 = "1493061011265167126244964198184541412411170283335545267344517719720602899336";
+const level1 = "1493061011265167126244964198184541412411170283335545267344517718621091276560";
+const level2 = "1493061011265167126244964198184541412411170283335545267344517719720602901836";
+const level3 = "1493061011265167126244964198184541412411170283335545267344517717521579643784";
 const level4 = "1493061011265167126244964198184541412411170283335545267344517720820114524612";
 const level5 = "1493061011265167126244964198184541412411170283335545267344517721919626150888";
 const level6 = "1493061011265167126244964198184541412411170283335545267344517723019137778164";
@@ -33,19 +33,19 @@ async function makeDistribution() {
   let nft = level.options[level.selectedIndex].text;
 
   if (nft == "Level 1") {
-    id = "1493061011265167126244964198184541412411170283335545267344517718621091276560";
+    id = level1;
   } else if (nft == "Level 2") {
-    id = "1493061011265167126244964198184541412411170283335545267344517719720602901836";
+    id = level2;
   } else if (nft == "Level 3") {
-    id = "1493061011265167126244964198184541412411170283335545267344517717521579643784";
+    id = level3;
   } else if (nft == "Level 4") {
-    id = "1493061011265167126244964198184541412411170283335545267344517720820114524612";
+    id = level4;
   } else if (nft == "Level 5") {
-    id = "1493061011265167126244964198184541412411170283335545267344517721919626150888";
+    id = level5;
   } else if (nft == "Level 6") {
-    id = "1493061011265167126244964198184541412411170283335545267344517723019137778164";
+    id = level6;
   } else if (nft == "Level 7") {
-    id = "1493061011265167126244964198184541412411170283335545267344517724118649405540";
+    id = level7;
   } else {
     id = "0";
   }
